@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu du Restaurant</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1209;
+    font-family: 'Cormorant Garamond', serif;
+    color: #f5f0e8;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+  .page { max-width: 620px; width: 100%; }
+  .frame {
+    border: 1px solid #b8860b;
+    padding: 44px 48px;
+    position: relative;
+  }
+  .frame .inner { position: absolute; inset: 8px; border: 1px solid rgba(184,134,11,0.3); pointer-events: none; }
+  .corner { position: absolute; width: 28px; height: 28px; border-style: solid; border-color: #d4a017; }
+  .tl { top:-1px; left:-1px; border-width: 2px 0 0 2px; }
+  .tr { top:-1px; right:-1px; border-width: 2px 2px 0 0; }
+  .bl { bottom:-1px; left:-1px; border-width: 0 0 2px 2px; }
+  .br { bottom:-1px; right:-1px; border-width: 0 2px 2px 0; }
+
+  .header { text-align: center; margin-bottom: 36px; }
+  .subtitle { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: #b8860b; margin-bottom: 14px; opacity: 0.8; }
+  h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 400; color: #f5f0e8; line-height: 1; margin-bottom: 16px; letter-spacing: 2px; }
+  .ornament { display: flex; align-items: center; justify-content: center; gap: 14px; }
+  .line-left { height: 1px; width: 70px; background: linear-gradient(to right, transparent, #b8860b); }
+  .line-right { height: 1px; width: 70px; background: linear-gradient(to left, transparent, #b8860b); }
+  .diamond { width: 6px; height: 6px; background: #b8860b; transform: rotate(45deg); }
+
+  .section-title { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400; font-size: 20px; color: #d4a017; text-align: center; margin-bottom: 18px; letter-spacing: 1px; }
+  .item { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px dotted rgba(184,134,11,0.2); gap: 12px; }
+  .item:last-child { border-bottom: none; }
+  .item-name { font-size: 16px; color: #f5f0e8; }
+  .item-en { font-size: 12px; color: rgba(245,240,232,0.5); font-style: italic; }
+  .item-right { text-align: right; white-space: nowrap; }
+  .item-note { font-size: 11px; color: rgba(245,240,232,0.4); font-style: italic; margin-right: 5px; }
+  .item-price { font-family: 'Playfair Display', serif; font-size: 15px; color: #d4a017; }
+
+  .divider { display: flex; align-items: center; gap: 12px; margin: 24px 0; opacity: 0.45; }
+  .divider-line { flex: 1; height: 1px; background: #b8860b; }
+  .divider span { color: #b8860b; font-size: 14px; }
+
+  .footer { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(184,134,11,0.3); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(245,240,232,0.3); }
+
+  .qr-section { text-align: center; margin-top: 36px; }
+  .qr-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #b8860b; margin-bottom: 14px; opacity: 0.8; }
+  #qrcode { display: inline-block; background: #f5f0e8; padding: 12px; border: 1px solid #b8860b; }
+
+  @media (max-width: 480px) {
+    .frame { padding: 32px 24px; }
+    h1 { font-size: 38px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="frame">
+    <div class="inner"></div>
+    <div class="corner tl"></div>
+    <div class="corner tr"></div>
+    <div class="corner bl"></div>
+    <div class="corner br"></div>
+
+    <div class="header">
+      <p class="subtitle">Carte du Jour</p>
+      <h1>Menu</h1>
+      <div class="ornament">
+        <div class="line-left"></div>
+        <div class="diamond"></div>
+        <div class="line-right"></div>
+      </div>
+    </div>
+
+    <!-- ENTRÉES -->
+    <h2 class="section-title">— Entrées —</h2>
+    <div class="item"><div><div class="item-name">Carpaccio de Thon</div><div class="item-en">Tuna Carpaccio</div></div><div class="item-right"><span class="item-price">17,00 €</span></div></div>
+    <div class="item"><div><div class="item-name">Assiette Découverte</div><div class="item-en">Discovery Platter</div></div><div class="item-right"><span class="item-price">18,50 €</span></div></div>
+    <div class="item"><div><div class="item-name">Plateau Charcuterie Corse</div><div class="item-en">Corsican Charcuterie Board</div></div><div class="item-right"><span class="item-price">22,00 €</span></div></div>
+    <div class="item"><div><div class="item-name">Poêlée St Jacques à la Crème de Madame</div><div class="item-en">Seared Scallops in Madame's Cream</div></div><div class="item-right"><span class="item-price">23,50 €</span></div></div>
+
+    <div class="divider"><div class="divider-line"></div><span>✦</span><div class="divider-line"></div></div>
+
+    <!-- VIANDES -->
+    <h2 class="section-title">— Viandes —</h2>
+    <div class="item"><div><div class="item-name">Entrecôte Salers</div><div class="item-en">Sirloin Steak</div></div><div class="item-right"><span class="item-note">300g</span><span class="item-price">31,00 €</span></div></div>
+    <div class="item"><div><div class="item-name">Andouillette 5AAA</div><div class="item-en">5AAA Sausage</div></div><div class="item-right"><span class="item-price">27,00 €</span></div></div>
+    <div class="item"><div><div class="item-name">Magret de Canard</div><div class="item-en">Duck Breast</div></div><div class="item-right"><span class="item-price">30,00 €</span></div></div>
+    <div class="item"><div><div class="item-name">Côte de Veau Sauce Comté</div><div class="item-en">Veal Chop with Comté Sauce</div></div><div class="item-right"><span class="item-price">36,00 €</span></div></div>
+    <div class="item"><div><div class="item-name">Tartare de Bœuf</div><div class="item-en">Beef Tartare</div></div><div class="item-right"><span class="item-price">24,50 €</span></div></div>
+
+    <div class="divider"><div class="divider-line"></div><span>✦</span><div class="divider-line"></div></div>
+
+    <!-- POISSONS -->
+    <h2 class="section-title">— Poissons —</h2>
+    <div class="item"><div><div class="item-name">Spaghettis aux Gambas</div><div class="item-en">Spaghetti with Prawns</div></div><div class="item-right"><span class="item-price">28,00 €</span></div></div>
+    <div class="item"><div><div class="item-name">Tartare de Thon</div><div class="item-en">Tuna Tartare</div></div><div class="item-right"><span class="item-price">24,00 €</span></div></div>
+    <div class="item"><div><div class="item-name">Filet de Vivaneau</div><div class="item-en">Red Snapper Fillet</div></div><div class="item-right"><span class="item-price">24,00 €</span></div></div>
+    <div class="item"><div><div class="item-name">Filet de Saumon</div><div class="item-en">Salmon Fillet</div></div><div class="item-right"><span class="item-price">26,50 €</span></div></div>
+    <div class="item"><div><div class="item-name">Mi-cuit de Thon</div><div class="item-en">Semi-cooked Tuna</div></div><div class="item-right"><span class="item-price">24,00 €</span></div></div>
+
+    <div class="footer">Produits frais · Fresh Produce</div>
+  </div>
+
+  <div class="qr-section">
+    <p class="qr-label">Scanner pour accéder au menu</p>
+    <div id="qrcode"></div>
+  </div>
+</div>
+
+<script>
+  // Le QR code pointera automatiquement vers l'URL de cette page une fois en ligne
+  var url = window.location.href;
+  new QRCode(document.getElementById("qrcode"), {
+    text: url,
+    width: 150,
+    height: 150,
+    colorDark: "#1a1209",
+    colorLight: "#f5f0e8",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+</script>
+</body>
+</html>
